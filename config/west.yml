@@ -1,18 +1,19 @@
-manifest:  
-  remotes:  
-    - name: zmkfirmware  
-      url-base: https://github.com/zmkfirmware  
-    - name: na-ka-no
-      url-base: https://github.com/na-ka-no
-  
-  projects:  
+manifest:
+  defaults:
+    remote: cormoran
+  remotes:
+    - name: cormoran
+      url-base: https://github.com/cormoran
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+  projects:
+    - name: zmk-west-commands
+      revision: v1.0.0
+      import: true
     - name: zmk
-      remote: na-ka-no  # フォークしたリポジトリを参照  
-      revision: for-cool642tb_mini  # カスタムブランチ名  
-      import: app/west.yml  
-    - name: zmk-pmw3610-driver  
-      remote: na-ka-no
-      revision: main  
-  
-  self:  
+      revision: main+dya
+      import: app/west.yml
+    - name: zmk-driver-pmw3610-with-custom-studio-rpc
+      revision: main
+  self:
     path: config
