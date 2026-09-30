@@ -35,6 +35,18 @@ jobs:
           west update --narrow
           west zephyr-export
 
+      - name: Diagnose west zmk-build
+        continue-on-error: true
+        run: |
+          echo "=== west version ==="
+          west --version
+          echo "=== west list ==="
+          west list
+          echo "=== zmk-build help ==="
+          west zmk-build --help 2>&1 || echo "zmk-build not available"
+          echo "=== zmk-build no-run ==="
+          west zmk-build -d ./build --no-run 2>&1 || echo "zmk-build --no-run failed"
+
       - name: Build
         run: |
           ZMK_APP="${PWD}/zmk/app"
