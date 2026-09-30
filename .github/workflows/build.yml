@@ -36,7 +36,7 @@ jobs:
           west zephyr-export
 
       - name: Build
-        run: west zmk-build -d ./build -q
+        run: west zmk-build -d ./build
 
       - name: Copy artifacts
         shell: sh -x {0}
