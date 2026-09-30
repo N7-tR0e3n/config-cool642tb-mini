@@ -37,9 +37,17 @@ jobs:
 
       - name: Build
         run: |
-          west zmk-build -d ./build \
-            --extra-module-auto-discovery zmk-config \
-            -m "${PWD}/zmk-driver-pmw3610-with-custom-studio-rpc"
+          ZMK="${PWD}/zmk/app"
+          CFG="${PWD}/config"
+          MOD="${PWD}/zmk-driver-pmw3610-with-custom-studio-rpc"
+          west build -s "$ZMK" -d build/cool642tb-mini_R -b xiao_ble//zmk -S studio-rpc-usb-uart -p always -- \
+            -DSHIELD=cool642tb-mini_R -DZMK_CONFIG="$CFG" "-DZMK_EXTRA_MODULES=$MOD"
+          west build -s "$ZMK" -d build/cool642tb-mini_L -b xiao_ble//zmk -p always -- \
+            -DSHIELD=cool642tb-mini_L -DZMK_CONFIG="$CFG" "-DZMK_EXTRA_MODULES=$MOD"
+          west build -s "$ZMK" -d build/cool642tb-mini_R-settings_reset -b xiao_ble//zmk -p always -- \
+            -DSHIELD=cool642tb-mini_R -DZMK_CONFIG="$CFG" "-DZMK_EXTRA_MODULES=$MOD" -DCONFIG_ZMK_SETTINGS_RESET_ON_START=y
+          west build -s "$ZMK" -d build/cool642tb-mini_L-settings_reset -b xiao_ble//zmk -p always -- \
+            -DSHIELD=cool642tb-mini_L -DZMK_CONFIG="$CFG" "-DZMK_EXTRA_MODULES=$MOD" -DCONFIG_ZMK_SETTINGS_RESET_ON_START=y
 
       - name: Copy artifacts
         shell: sh -x {0}
