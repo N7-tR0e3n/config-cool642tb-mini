@@ -36,7 +36,10 @@ jobs:
           west zephyr-export
 
       - name: Build
-        run: west zmk-build -d ./build -m "${PWD}/zmk-driver-pmw3610-with-custom-studio-rpc"
+        run: |
+          west zmk-build -d ./build \
+            --extra-module-auto-discovery zmk-config \
+            -m "${PWD}/zmk-driver-pmw3610-with-custom-studio-rpc"
 
       - name: Copy artifacts
         shell: sh -x {0}
