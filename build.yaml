@@ -23,11 +23,11 @@ include:
     snippet: studio-rpc-usb-uart
   - board: xiao_ble//zmk
     shield: cool642tb-mini_L
-  - board: xiao_ble//zmk
+  - artifact: cool642tb-mini_R-settings_reset
+    board: xiao_ble//zmk
     shield: cool642tb-mini_R
     cmake-args: -DCONFIG_ZMK_SETTINGS_RESET_ON_START=y
-    artifact-name: cool642tb-mini_R-settings_reset
-  - board: xiao_ble//zmk
+  - artifact: cool642tb-mini_L-settings_reset
+    board: xiao_ble//zmk
     shield: cool642tb-mini_L
     cmake-args: -DCONFIG_ZMK_SETTINGS_RESET_ON_START=y
-    artifact-name: cool642tb-mini_L-settings_reset
