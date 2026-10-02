@@ -57,6 +57,7 @@
 	x-codes = <INPUT_REL_X>;
 	y-codes = <INPUT_REL_Y>;
 	xy-to-scroll-enabled;
+    y-invert;
 	
 	axis-snap-mode = <AXIS_SNAP_MODE_Y>;
 	axis-snap-threshold = <600>;
