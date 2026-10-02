@@ -41,8 +41,8 @@
         linked-device-identifiers = "trackball";     // デバイス識別子（文字列）
         linked-subsystems = "zmk__trackball";        // ZMK サブシステム（必須）
         size = <120>;        // トラックボールの表示サイズ (120 = 1.2u 相当)
-        x = <1000>;          // X 座標 (右側、キーの右下あたり)
-        y = <320>;           // Y 座標 (下側)
+        x = <980>;          // X 座標 (右側、キーの右下あたり)
+        y = <310>;           // Y 座標 (下側)
     };
 };
 
