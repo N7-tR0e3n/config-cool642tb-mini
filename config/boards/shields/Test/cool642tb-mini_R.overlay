@@ -2,6 +2,7 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
 #include <input/processors/runtime-input-processor.dtsi>
+#include <dt-bindings/zmk/runtime_input_processor.h>
 
 &default_transform {
     col-offset = <6>;
@@ -28,26 +29,7 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        // Input Processor チェーン:
-        // 1. zip_temp_layer: 操作開始800ms後にレイヤー4（MOUSE）に自動切替
-        // 2. mouse_runtime_input_processor: マウス移動の処理（DYA Studio から設定可能）
-        input-processors = <&zip_temp_layer 4 800
-                           &mouse_runtime_input_processor>;
-    };
-
-    // ==============================================================================
-    // Input Listener: トラックボール（スクロール操作）
-    // ==============================================================================
-    trackball_scroll_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        // Input Processor チェーン:
-        // 1. zip_temp_layer: 操作開始直後にレイヤー5（SCROLL）に自動切替
-        // 2. zip_xy_to_scroll_mapper: XY移動をスクロールに変換
-        // 3. scroll_runtime_input_processor: スクロールの処理（DYA Studio から設定可能）
-        input-processors = <&zip_temp_layer 5 0
-                           &zip_xy_to_scroll_mapper
-                           &scroll_runtime_input_processor>;
+        input-processors = <&mouse_runtime_input_processor &scroll_runtime_input_processor>
     };
 
     // ==============================================================================
@@ -60,8 +42,24 @@
         linked-subsystems = "zmk__trackball";        // ZMK サブシステム（必須）
         size = <120>;        // トラックボールの表示サイズ (120 = 1.2u 相当)
         x = <1000>;          // X 座標 (右側、キーの右下あたり)
-        y = <500>;           // Y 座標 (下側)
+        y = <510>;           // Y 座標 (下側)
     };
+};
+
+&mouse_runtime_input_processor {
+	temp-layer-enabled;
+	temp-layer = <4>;
+};
+
+&scroll_runtime_input_processor {
+	active-layers = <BIT(5)>;
+	
+	x-codes = <INPUT_REL_X>;
+	y-codes = <INPUT_REL_Y>;
+	xy-to-scroll-enabled;
+	
+	axis-snap-mode = <AXIS_SNAP_MODE_Y>;
+	axis-snap-threshold = <600>;
 };
 
 &pinctrl {
