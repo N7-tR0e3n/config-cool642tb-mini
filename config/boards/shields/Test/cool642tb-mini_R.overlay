@@ -1,4 +1,5 @@
 #include "cool642tb-mini.dtsi"
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &default_transform {
     col-offset = <6>;
@@ -19,6 +20,17 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
+    };
+
+    // ==============================================================================
+    // 物理レイアウト: トラックボール (DYA Studio で表示)
+    // ==============================================================================
+    trackball0: trackball0 {
+        compatible = "cormoran,physical-layout-trackball";
+        display-name = "Trackball";
+        size = <120>;        // トラックボールの表示サイズ (120 = 1.2u 相当)
+        x = <1050>;          // X 座標 (右側、キーの右下あたり)
+        y = <250>;           // Y 座標 (下側)
     };
 };
 
@@ -53,11 +65,12 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";
+        compatible = "cormoran,pmw3610";
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        automouse-layer = <4>;
-        scroll-layers = <5>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
     };
 };
