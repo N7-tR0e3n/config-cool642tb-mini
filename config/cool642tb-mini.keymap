@@ -27,6 +27,11 @@
             bindings = <&kp LANG1>;
             key-positions = <18 19>;
         };
+
+        combo_unlockpy {
+            bindings = <&studio_unlock>;
+            key-positions = <0 1 8 9>;
+        };
     };
 
     behaviors {
@@ -113,7 +118,7 @@
 &trans  &trans  &trans  &trans  &trans                      &trans    &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &mkp MB3  &mkp MB1  &trans    &mkp MB2  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                  &studio_unlock
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                  &trans
             >;
         };
 
@@ -144,7 +149,7 @@
             >;
         };
     };
-    
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
