@@ -15,10 +15,6 @@
             ;
 };
 
-&left_encoder {
-    status = "disabled";
-};
-
 / {
     trackball_listener {
         compatible = "zmk,input-listener";
