@@ -62,6 +62,21 @@ manifest:
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
       revision: main
-  
+    # DYA Diagnostics Development
+    - name: zmk-feature-device-info
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-watchdog
+      remote: cormoran
+      revision: main
+    - name: zmk-module-devtool
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-zephyr-setting-expose
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-kscan-diagnostics
+      remote: cormoran
+      revision: main
   self:  
     path: config
