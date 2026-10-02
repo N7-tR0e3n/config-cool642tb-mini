@@ -21,12 +21,13 @@
     // ==============================================================================
     rotary_encoders0: rotary_encoders0 {
         compatible = "cormoran,physical-layout-rotary-encoders";
+        display-name = "Rotary Encoders";  // 必須プロパティ
         encoders = <&encoder0>;
     };
 
     encoder0: encoder0 {
         compatible = "cormoran,physical-layout-rotary-encoder";
-        linked-device-identifiers = <&left_encoder>;  // 実際のデバイスとリンク
+        // linked-device-identifiers は不要（encoder0 には定義されていない）
         size = <120>;        // エンコーダーの表示サイズ (120 = 1.2u 相当)
         x = <600>;           // X 座標 (左側の右端あたり)
         y = <0>;             // Y 座標 (上側)
