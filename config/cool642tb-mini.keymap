@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <behaviors/runtime-sensor-rotate.dtsi>
 
 #define MOUSE 4
 #define SCROLL 5
@@ -34,13 +35,28 @@
     };
 
     behaviors {
-        encoder_msc_down_up: encoder_msc_down_up {
-            compatible = "zmk,behavior-sensor-rotate";
-            label = "ENCODER_MSC_DOWN_UP";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+        // encoder_msc_down_up: encoder_msc_down_up {
+        //     compatible = "zmk,behavior-sensor-rotate";
+        //     label = "ENCODER_MSC_DOWN_UP";
+        //     #sensor-binding-cells = <0>;
+        //     bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
 
+        //     tap-ms = <20>;
+        // };
+        encoder_msc_down_up: encoder_msc_down_up {
+            compatible = "zmk,behavior-runtime-sensor-rotate";
+            #sensor-binding-cells = <0>;
             tap-ms = <20>;
+            cw-binding = <&msc SCRL_DOWN>;
+            ccw-binding = <&msc SCRL_UP>;
+        };
+
+        encoder_msc_left_right: encoder_msc_left_right {
+            compatible = "zmk,behavior-runtime-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            tap-ms = <20>;
+            cw-binding = <&msc SCRL_LEFT>;
+            ccw-binding = <&msc SCRL_RIGHT>;
         };
     };
 

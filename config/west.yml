@@ -58,6 +58,10 @@ manifest:
     - name: zmk-module-runtime-input-processor
       remote: cormoran
       revision: main
+    # DYA Rotary Encoder
+    - name: zmk-behavior-runtime-sensor-rotate
+      remote: cormoran
+      revision: main
   
   self:  
     path: config
