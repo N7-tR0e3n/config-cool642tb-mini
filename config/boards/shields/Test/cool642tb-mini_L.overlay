@@ -26,6 +26,7 @@
 
     encoder0: encoder0 {
         compatible = "cormoran,physical-layout-rotary-encoder";
+        linked-device-identifiers = <&left_encoder>;  // 実際のデバイスとリンク
         size = <120>;        // エンコーダーの表示サイズ (120 = 1.2u 相当)
         x = <600>;           // X 座標 (左側の右端あたり)
         y = <0>;             // Y 座標 (上側)

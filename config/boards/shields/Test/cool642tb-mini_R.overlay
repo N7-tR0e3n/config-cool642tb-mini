@@ -28,6 +28,7 @@
     trackball0: trackball0 {
         compatible = "cormoran,physical-layout-trackball";
         display-name = "Trackball";
+        linked-device-identifiers = <&trackball>;  // 実際のデバイスとリンク
         size = <120>;        // トラックボールの表示サイズ (120 = 1.2u 相当)
         x = <1050>;          // X 座標 (右側、キーの右下あたり)
         y = <250>;           // Y 座標 (下側)
