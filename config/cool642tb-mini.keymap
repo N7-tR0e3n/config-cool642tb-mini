@@ -15,22 +15,17 @@
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
+    runtime_combo_defaults {
+        compatible = "cormoran,runtime-combo-defaults";
 
-        shift_tab {
+        combo_lang2 {
             bindings = <&kp LANG2>;
             key-positions = <12 13>;
         };
 
-        lang {
+        combo_lang1 {
             bindings = <&kp LANG1>;
             key-positions = <18 19>;
-        };
-
-        layer_3 {
-            bindings = <&mo 3>;
-            key-positions = <38 41>;
         };
     };
 
@@ -147,6 +142,15 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
+        };
+    };
+    
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        layer3 {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
