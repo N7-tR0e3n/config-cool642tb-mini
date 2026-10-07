@@ -2,6 +2,8 @@ manifest:
   remotes:
     - name: cormoran
       url-base: https://github.com/cormoran
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
   projects:
     # すべての依存をコミット SHA で固定する（2026-10-05 時点の各ブランチ先端）。
     # 上げるときは SHA を書き換え、ビルドと実機の動作を確かめてから次へ進む。
@@ -18,8 +20,8 @@ manifest:
     # Zephyr: cormoran/zephyr v4.1.0+zmk-fixes+nrf-half-duplex-uart
     # clone-depth は付けない（付けるとブランチが進んだ後にこの SHA を取得できなくなる）
     - name: zephyr
-      remote: cormoran
-      revision: 63363d92c475ad203b35e9047cef7ecd8706a6fc
+      remote: zmkfirmware
+      revision: 10ba6d0cb38bc3d258775d27982f707599320085
       import:
         name-blocklist:
           - ci-tools
