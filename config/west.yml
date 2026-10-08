@@ -45,7 +45,7 @@ manifest:
     # DYA Studio Core
     - name: zmk-feature-custom-settings
       remote: cormoran
-      revision: c6a7fef3a3be3d3ace5de9a4b0628c6418cd1f3f
+      revision: 11fc4dda8ac11b1ff33101a6e59377021fec381b
     - name: zmk-feature-fast-keymap
       remote: cormoran
       revision: 8dac76de0ba38588ba39ca498910e24f8332bc6b
